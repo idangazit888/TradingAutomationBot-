@@ -1,106 +1,100 @@
-# ═══════════════════════════════════════════════════════════════
-#  PUBLIC SHOWCASE REPO — strategy internals are intentionally
-#  excluded. This repo demonstrates system architecture, async
-#  design, and testing practice — NOT the trading edge.
-# ═══════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════
+#  PUBLIC SHOWCASE REPO
+#  Demonstrates system architecture, async design, and testing practice.
+#  The proprietary trading edge — signal math, entry-decision logic,
+#  tuned parameters, data collection, and research — is intentionally
+#  excluded. See README.
+# ═══════════════════════════════════════════════════════════════════
 
-# ── Secrets ──
+# ── Secrets & credentials ──
 .env
 *.env
+*.pem
+*.key
 
-# ── Proprietary strategy math, parameters & research (NEVER publish) ──
+# ── Proprietary: signal math & entry-decision logic ──
 GapVelCVD_Strategy.md
 GapVelCVD_Expert_Review.md
 ud_stack.py
 ud_signal.py
+ud_pricing.py
+ud_confirm.py
+vwap_signal.py
 strategy.py
 vwap_strategy.py
-assets/
-research/gapvelcvd/
-research/vps_pulls/
 
-# ── Data collection code (proprietary edge) ──
+# ── Proprietary: tuned parameters & config ──
+assets/
+ud_config.py
+vwap_config.py
+
+# ── Proprietary: data-collection pipeline ──
 ud_ticks.py
 pm_trades.py
 spot_log.py
 intrablock_collector.py
 intrablock_paper.py
 
-# ── All data / trade history / logs ──
+# ── Strategy-coupled orchestrators & entry points ──
+bot.py
+ud_bot.py
+vwap_bot.py
+run.py
+backtest_1s.py
+backtest_winrate.py
+
+# ── Research & backtesting ──
+research/
+
+# ── Data, trade history & logs ──
 *.csv
 *.log
 *.json
-trades.json
-research/ud_ticks_pulls/
 graphify-out/
 
-# ── Python ──
+# ── Tests coupled to hidden modules (repo keeps a focused subset) ──
+test_ud_bot.py
+test_ud_config.py
+test_ud_signal.py
+test_ud_stack.py
+test_ud_ticks.py
+test_ud_pricing.py
+test_ud_position.py
+test_ud_portfolio.py
+test_ud_engine.py
+test_ud_run_smoke.py
+test_ud_confirm.py
+test_ud_indicators.py
+test_ud_ledger.py
+test_pm_trades.py
+test_spot_log.py
+test_strategy.py
+test_intrablock_collector.py
+test_intrablock_paper.py
+test_vwap_bot.py
+test_vwap_fill.py
+test_vwap_pnl.py
+test_vwap_signal.py
+test_vwap_config.py
+test_vwap_session.py
+test_vwap_journal.py
+test_vwap_persist.py
+test_vwap_engine_parse.py
+test_vwap_engine_candleclose.py
+test_vwap_resolution_fix.py
+test_vwap_telegram.py
+test_feed_subscription_prune.py
+test_notifications.py
+test_missed_entry_alerts.py
+
+# ── Tooling / editor / OS ──
+.claude/
+.codex/
 __pycache__/
 *.pyc
 *.pyo
 .pytest_cache/
 .venv/
 venv/
-
-# ── Editor / OS ──
-.claude/
-.codex/
 .DS_Store
 Thumbs.db
-
-# ── Strategy-coupled orchestrators & wrappers (import hidden modules) ──
-bot.py
-ud_bot.py
-vwap_bot.py
-backtest_1s.py
-backtest_winrate.py
-
-run.py
-
-ud_config.py
-
-# ── Tests coupled to hidden strategy/data modules ──
-test_ud_bot.py
-test_ud_config.py
-test_ud_signal.py
-test_ud_stack.py
-test_ud_ticks.py
-test_pm_trades.py
-test_spot_log.py
-test_strategy.py
-test_intrablock_collector.py
-test_intrablock_paper.py
-test_ud_portfolio.py
-test_ud_position.py
-test_ud_pricing.py
-test_ud_engine.py
-test_ud_run_smoke.py
-test_vwap_bot.py
-test_vwap_fill.py
-test_vwap_pnl.py
-test_vwap_resolution_fix.py
-test_vwap_telegram.py
-test_missed_entry_alerts.py
-
-# ── Research collection scripts ──
-research/
-
-# ── Extra tests (kept local; repo shows 4 representative suites) ──
-test_feed_subscription_prune.py
-test_notifications.py
-test_ud_confirm.py
-test_ud_indicators.py
-test_ud_ledger.py
-test_vwap_config.py
-test_vwap_engine_candleclose.py
-test_vwap_engine_parse.py
-test_vwap_journal.py
-test_vwap_persist.py
-test_vwap_session.py
-test_vwap_signal.py
-
-# ── Entry-decision logic (pricing gate / fakeout confirm / signal) ──
-ud_pricing.py
-ud_confirm.py
-vwap_signal.py
-vwap_config.py
