@@ -98,3 +98,9 @@ test_vwap_journal.py
 test_vwap_persist.py
 test_vwap_session.py
 test_vwap_signal.py
+
+# ── Entry-decision logic (pricing gate / fakeout confirm / signal) ──
+ud_pricing.py
+ud_confirm.py
+vwap_signal.py
+vwap_config.py

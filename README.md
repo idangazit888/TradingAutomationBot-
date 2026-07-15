@@ -41,15 +41,15 @@ measure whether a statistical edge is real *before* any money is at risk.
 | **Live data feeds** | `feeds.py` | Async WebSocket clients (order books + trade stream), auto-reconnect, subscription pruning, feed watchdog |
 | **Candle / VWAP engine** | `vwap_engine.py`, `ud_engine.py`, `volatility.py`, `ud_indicators.py` | Per-asset 1-minute candle synthesis, session VWAP, volatility indicators |
 | **Paper accounting** | `paper_account.py`, `ud_ledger.py`, `ud_portfolio.py`, `trade_journal.py` | Isolated wallets, append-only trade ledger, per-arm P&L, persistence |
-| **Position lifecycle** | `ud_position.py`, `ud_pricing.py`, `ud_confirm.py` | Sizing, taker-fee model, entry confirmation, resolution |
-| **Risk controls** | `risk_manager.py` | Concurrency caps, circuit breakers (daily-loss / consecutive-loss halts) |
-| **Execution** | `execution.py`, `live_startup.py`, `preflight.py` | Order placement abstraction, startup checks |
-| **Signal scaffolding** | `vwap_signal.py`, `ud_config.py`* | Setup/trigger structure (the *tuned thresholds* live in the private layer) |
+| **Position lifecycle** | `ud_position.py` | Position predicates, resolution P&L |
+| **Risk controls** | `risk_manager.py`, `ud_portfolio.py` | Concurrency caps, circuit breakers (daily-loss / consecutive-loss halts) |
+| **Execution** | `execution.py`, `live_startup.py`, `preflight.py` | Order placement abstraction, on-chain auth, startup checks |
 | **Monitoring** | `telegram_notifier.py`, `telegram_commands.py`, `vwap_telegram.py`, `notifications.py`, `slippage_logger.py` | Real-time alerts, remote control commands, execution-quality logging |
-| **Config** | `vwap_config.py` | Runtime configuration (non-sensitive) |
 | **Analysis tools** | `analyze_*.py`, `diagnose_trades.py` | Post-hoc ledger analysis |
 
-\* The strategy-parameter file is private; the config *structure* is shown.
+The **signal logic, entry-decision gates, and tuned parameters** are the
+proprietary layer and are **not** in this repo — they plug into the engine
+and accounting layers above through small, well-defined interfaces.
 
 ### Design highlights
 
