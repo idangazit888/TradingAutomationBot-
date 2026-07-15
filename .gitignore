@@ -84,3 +84,17 @@ test_missed_entry_alerts.py
 
 # ── Research collection scripts ──
 research/
+
+# ── Extra tests (kept local; repo shows 4 representative suites) ──
+test_feed_subscription_prune.py
+test_notifications.py
+test_ud_confirm.py
+test_ud_indicators.py
+test_ud_ledger.py
+test_vwap_config.py
+test_vwap_engine_candleclose.py
+test_vwap_engine_parse.py
+test_vwap_journal.py
+test_vwap_persist.py
+test_vwap_session.py
+test_vwap_signal.py

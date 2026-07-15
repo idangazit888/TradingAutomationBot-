@@ -59,9 +59,10 @@ measure whether a statistical edge is real *before* any money is at risk.
   and portfolio, so results never cross-contaminate.
 - **Defense-in-depth risk**: circuit breakers halt trading automatically on daily
   or consecutive-loss thresholds.
-- **Extensive tests**: the public modules ship with their unit tests
-  (`test_*.py`) — feeds, accounting, ledger, position lifecycle, indicators,
-  VWAP engine, Telegram, persistence.
+- **Test-covered**: a representative sample of the suite is included
+  (`test_*.py`) — covering async multi-asset feeds, feed-failure watchdogs,
+  and paper-account accounting + persistence. (The full system carries a much
+  larger suite; a focused subset is shown here.)
 - **Deployed for 24/7 operation**: runs on a Linux VPS under PM2 process
   management with backups and feed watchdogs.
 
